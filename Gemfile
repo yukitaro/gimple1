@@ -3,6 +3,7 @@ gem "therubyracer", :require => 'v8'
 
 gem 'rails', '3.2.8'
 gem 'bootstrap-sass', '2.0.0'
+gem 'bcrypt-ruby', '3.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -26,6 +27,8 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
+
+gem 'annotate', '2.5.0', group: :development
 
 group :test do
   gem 'capybara', '1.1.2'
