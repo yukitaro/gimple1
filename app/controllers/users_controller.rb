@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   before_filter :admin_user, only: :destroy
 
   def new
-    @user = User.new
+    #@user = User.new
+    if !signed_in?
+      @user = User.new
+    else
+      redirect_to(root_path)
+    end
   end
 
   def show

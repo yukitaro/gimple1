@@ -56,9 +56,7 @@ describe "Authentication" do
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user) 
-          fill_in "Email", with: user.email
-          fill_in "Password", with: user.password
-          click_button "Sign in"
+          sign_in user
         end
 
         describe "after signing in " do
@@ -85,6 +83,10 @@ describe "Authentication" do
       describe "visiting the user index" do
         before { visit users_path }
         it { should have_selector('title', text: 'Sign in') }
+      end
+
+      describe "trying to access Profile" do
+        it { should_not have_link('Profile', text: 'Profile') }
       end
     end
 
