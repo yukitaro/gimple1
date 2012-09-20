@@ -7,6 +7,7 @@ SampleApp::Application.routes.draw do
   resources :sessions,      only: [:new, :create, :destroy]
   resources :microposts,    only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :notifications, only: [:new, :create, :show]
 
   root to: 'static_pages#home'
 
@@ -17,6 +18,8 @@ SampleApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+  match '/kenny',   to: 'static_pages#booty'
+  match '/portal',  to: 'static_pages#portal'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

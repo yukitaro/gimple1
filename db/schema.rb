@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906155635) do
+ActiveRecord::Schema.define(:version => 20120920163017) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(:version => 20120906155635) do
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "notifications", :force => true do |t|
+    t.string   "notification_type"
+    t.string   "message"
+    t.date     "received_date"
+    t.string   "owner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -32,6 +41,19 @@ ActiveRecord::Schema.define(:version => 20120906155635) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "todos", :force => true do |t|
+    t.string   "todo_title"
+    t.date     "deadline"
+    t.integer  "customer_id"
+    t.integer  "creator"
+    t.integer  "owner"
+    t.string   "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "todos", ["customer_id", "creator", "owner", "created_at"], :name => "index_todos_on_customer_id_and_creator_and_owner_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "name"

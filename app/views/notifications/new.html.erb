@@ -1,0 +1,12 @@
+% provide(:title, 'Notifications') %>
+<h1>Add Notifications</h1>
+ 
+<div class="row">
+<div class="span6 offset3">
+<%= form_for(@notification) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= render 'fields', f: f %>
+<%= f.submit "Create new notification", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+</div>

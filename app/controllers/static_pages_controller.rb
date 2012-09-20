@@ -14,4 +14,12 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def booty
+    @notifications = Notification.all
+  end
+
+  def portal
+    @notifications = Notification.all
+  end
 end
